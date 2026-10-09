@@ -126,3 +126,24 @@ stopped qualification. A late callback cannot hide a receipt timeout by refreshi
 [Tooling](docs/tooling.md) distinguishes executed checks from deferred GUI tools.
 Cloud verification remains pending. Do not create or move a task3 tag until the
 user confirms the cloud run. Task2's repository and tag remain unchanged.
+
+## Low-rate simulation clock repair (2026-10-09)
+
+The first cloud run of dd48da2 initialized but timed out on turn 1 after 30 seconds;
+the user observed almost no movement or intermittent turning. This is a failed cloud
+acceptance, not a completed Task3. The exact cloud clock frequency was not measured.
+
+A local reproduction at 5 Hz /clock with a 50 Hz wall timer exposed a defect:
+repeated ROS timestamps caused stop() to publish zero and reset the PID slew state.
+The old node could not complete the two-turn fixture within its 18-second bound.
+Repeated timestamps now skip the control update without resetting or publishing;
+the steady-clock feedback watchdog still runs first. A paused clock with frozen
+feedback still stops and exits 2; no timeout or PID gain was relaxed.
+
+The same 5 Hz fixture now finishes and exits 0. Ten pure tests and twelve distinct
+node/configuration cases passed (the prior ten plus slow-clock completion and clock
+pause timeout). The full maze regression completes four turns, max endpoint error
+0.009767 rad, zero sampled crossing, final zero command and exit 0. Evidence is in
+evidence/clock_repair; the full CSV remains in the local engineering record.
+Turn-progress logs now show yaw, target, error, measured/commanded angular velocity
+and dt once per advancing ROS second. Confirm the repair in the cloud before tagging.

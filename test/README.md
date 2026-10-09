@@ -16,8 +16,8 @@ From this package, run the isolated node fixture (it sets local ROS domain 174):
 python3 test/verify_turn_node.py
 ```
 
-Ten cases cover wraparound completion, lost/stale/missing feedback, a yaw jump,
-changed frames, moving startup, a single stopped sample, stalled motion and invalid
+Twelve cases cover wraparound completion, lost/stale/missing feedback, a yaw jump,
+changed frames, moving startup, a single stopped sample, stalled motion, slow /clock completion, paused /clock timeout and invalid
 gains. Logs go to `/tmp/turn_controller_tests`; override with `TURN_TEST_OUTPUT`.
 The executable is resolved through the sourced ament index, not a machine-specific path.
 

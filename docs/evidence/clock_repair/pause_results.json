@@ -1,0 +1,11 @@
+[
+  {
+    "case": "clock_pause",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "invalid_gain",
+    "passed": true
+  }
+]

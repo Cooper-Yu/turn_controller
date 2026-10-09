@@ -1,0 +1,6 @@
+[INFO] [1791549038.129706696] [turn_controller]: Task3: 2 relative turns; PID=(1.800, 0.030, 0.350), max_wz=0.600
+[INFO] [1791549038.529949123] [turn_controller]: Initialization complete: x=0.000000 y=0.000000 yaw=3.100000 rad, odom_frame=odom
+[INFO] [1791549038.530001360] [turn_controller]: Waypoint 1: x=0.000000 y=0.000000 yaw=3.400000 rad (unwrapped), delta=0.300000 rad
+[INFO] [1791549038.530006309] [turn_controller]: Waypoint 2: x=0.000000 y=0.000000 yaw=3.100000 rad (unwrapped), delta=-0.300000 rad
+[INFO] [1791549038.530009881] [turn_controller]: Turn 1/2: start=3.100000 delta=0.300000 target=3.400000 rad (unwrapped)
+[INFO] [1791549056.120535802] [rclcpp]: signal_handler(SIGINT/SIGTERM)

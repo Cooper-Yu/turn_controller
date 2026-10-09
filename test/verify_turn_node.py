@@ -14,6 +14,7 @@ os.environ['ROS_LOCALHOST_ONLY'] = '1'
 import rclpy
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
+from rosgraph_msgs.msg import Clock
 
 from ament_index_python.packages import get_package_prefix
 
@@ -39,7 +40,7 @@ def verify_result(case, exit_code, text, commands, yaw):
     assert abs(commands[-1][2]) < 1e-9
     if case == 'single':
         assert 'Initialization complete' not in text, text
-    if case == 'wrap':
+    if case in ('wrap', 'slow_clock'):
         assert exit_code == 0 and text.count('Reached turn ') == 2, text
         assert abs(yaw - 3.10) < 0.02, yaw
         verify_waypoints(text)
@@ -54,6 +55,7 @@ def verify_result(case, exit_code, text, commands, yaw):
             'moving': 'INITIAL_STOP_TIMEOUT',
             'single': 'ODOM_TIMEOUT',
             'stalled': 'TURN_TIMEOUT',
+            'clock_pause': 'ODOM_TIMEOUT',
         }[case]
         assert expected in text, text
 
@@ -65,6 +67,10 @@ def feedback(node, case, elapsed, yaw, wz):
     if case == 'frame' and elapsed > 1.2:
         m.header.frame_id = 'changed'
     m.header.stamp = node.get_clock().now().to_msg()
+    if case in ('slow_clock', 'clock_pause'):
+        elapsed = min(elapsed, 1.0) if case == 'clock_pause' else elapsed
+        m.header.stamp.sec = 100 + int(elapsed)
+        m.header.stamp.nanosec = int(elapsed * 5) % 5 * 200000000
     if case == 'stale':
         m.header.stamp.sec -= 2
     angle = yaw + (0.8 if case == 'jump' and elapsed > 1.2 else 0)
@@ -79,6 +85,7 @@ def feedback(node, case, elapsed, yaw, wz):
 def run(case):
     node = rclpy.create_node('turn_test_' + case)
     pub = node.create_publisher(Odometry, '/' + case + '/odom', 10)
+    clock_pub = node.create_publisher(Clock, '/clock', 10)
     commands = []
     node.create_subscription(
         Twist,
@@ -104,6 +111,8 @@ def run(case):
         '-p',
         'startup_timeout:=2.0',
     ]
+    if case in ('slow_clock', 'clock_pause'):
+        args.extend(['-p', 'use_sim_time:=true'])
     if case == 'stalled':
         args.extend(['-p', 'segment_timeout:=1.5'])
     path = OUT / (case + '.log')
@@ -127,6 +136,8 @@ def run(case):
                 sent_single = sent_single or send
             if send:
                 m = feedback(node, case, elapsed, yaw, wz)
+                if case in ('slow_clock', 'clock_pause'):
+                    clock_pub.publish(Clock(clock=m.header.stamp))
                 pub.publish(m)
             rclpy.spin_once(node, timeout_sec=0.01)
             time.sleep(0.01)
@@ -145,17 +156,10 @@ def run(case):
 
 
 try:
-    for case in [
-        'wrap',
-        'loss',
-        'jump',
-        'no_odom',
-        'stale',
-        'frame',
-        'moving',
-        'single',
-        'stalled',
-    ]:
+    for case in os.environ.get(
+        'TURN_TEST_CASES',
+        'wrap loss jump no_odom stale frame moving single stalled slow_clock clock_pause',
+    ).split():
         run(case)
     invalid = subprocess.run(
         [EXE, '--ros-args', '-p', 'kp:=-1.0'], capture_output=True, text=True, timeout=5

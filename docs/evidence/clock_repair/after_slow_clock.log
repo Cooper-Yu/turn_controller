@@ -1,0 +1,17 @@
+[INFO] [1791549114.355665248] [turn_controller]: Task3: 2 relative turns; PID=(1.800, 0.030, 0.350), max_wz=0.600
+[INFO] [1791549114.755813565] [turn_controller]: Initialization complete: x=0.000000 y=0.000000 yaw=3.100000 rad, odom_frame=odom
+[INFO] [1791549114.755855505] [turn_controller]: Waypoint 1: x=0.000000 y=0.000000 yaw=3.400000 rad (unwrapped), delta=0.300000 rad
+[INFO] [1791549114.755859964] [turn_controller]: Waypoint 2: x=0.000000 y=0.000000 yaw=3.100000 rad (unwrapped), delta=-0.300000 rad
+[INFO] [1791549114.755863316] [turn_controller]: Turn 1/2: start=3.100000 delta=0.300000 target=3.400000 rad (unwrapped)
+[INFO] [1791549114.955806481] [turn_controller]: Turn progress 1/2: yaw=3.1000 target=3.4000 error=0.3000 rad measured_wz=0.0000 command_wz=0.1200 rad/s dt=0.200 s
+[INFO] [1791549115.955811141] [turn_controller]: Turn progress 1/2: yaw=3.3100 target=3.4000 error=0.0900 rad measured_wz=0.1479 command_wz=0.1173 rad/s dt=0.200 s
+[INFO] [1791549116.955907185] [turn_controller]: Turn progress 1/2: yaw=3.3814 target=3.4000 error=0.0186 rad measured_wz=0.0378 command_wz=0.0284 rad/s dt=0.200 s
+[INFO] [1791549117.755898399] [turn_controller]: Turn 1 settled: error=0.008580 wz=0.000000; dwell=0.05 s
+[INFO] [1791549117.955896504] [turn_controller]: Reached turn 1: target=3.400000 actual=3.391420 error=0.008580 rad
+[INFO] [1791549117.955938201] [turn_controller]: Turn 2/2: start=3.391420 delta=-0.300000 target=3.100000 rad (unwrapped)
+[INFO] [1791549118.155909800] [turn_controller]: Turn progress 2/2: yaw=3.3914 target=3.1000 error=-0.2914 rad measured_wz=0.0000 command_wz=-0.1200 rad/s dt=0.200 s
+[INFO] [1791549119.155883914] [turn_controller]: Turn progress 2/2: yaw=3.1875 target=3.1000 error=-0.0875 rad measured_wz=-0.1488 command_wz=-0.1122 rad/s dt=0.200 s
+[INFO] [1791549120.155981128] [turn_controller]: Turn progress 2/2: yaw=3.1181 target=3.1000 error=-0.0181 rad measured_wz=-0.0367 command_wz=-0.0277 rad/s dt=0.200 s
+[INFO] [1791549120.955922932] [turn_controller]: Turn 2 settled: error=-0.008369 wz=0.000000; dwell=0.05 s
+[INFO] [1791549121.155989379] [turn_controller]: Reached turn 2: target=3.100000 actual=3.108369 error=-0.008369 rad
+[INFO] [1791549121.156045566] [turn_controller]: All turns completed; stopped.

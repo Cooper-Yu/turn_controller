@@ -240,17 +240,22 @@ void TurnController::execute_current_turn(
     return;
   }
   const double dt = (time - last_tick_).seconds();
-  if (dt == 0.0) {
-    stop();
-    return;
-  }
+  if (dt == 0.0) return;
   if (dt < 0.0 || dt > 0.5) {
     fail("ROS_TIME_JUMP");
     return;
   }
   last_tick_ = time;
   const double error = target_ - continuous_yaw_;
-  if (!handle_completion(time, error)) publish(pid_->update(error, yaw_rate_, dt));
+  if (!handle_completion(time, error)) {
+    const double command = pid_->update(error, yaw_rate_, dt);
+    publish(command);
+    RCLCPP_INFO_THROTTLE(
+      get_logger(), *get_clock(), 1000,
+      "Turn progress %zu/%zu: yaw=%.4f target=%.4f error=%.4f rad measured_wz=%.4f "
+      "command_wz=%.4f rad/s dt=%.3f s",
+      index_ + 1, steps_.size(), continuous_yaw_, target_, error, yaw_rate_, command, dt);
+  }
 }
 
 void TurnController::tick()

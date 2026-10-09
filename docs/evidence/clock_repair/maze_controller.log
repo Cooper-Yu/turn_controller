@@ -1,0 +1,32 @@
+[INFO] [1791549124.575068934] [turn_controller]: Task3: 4 relative turns; PID=(1.800, 0.030, 0.350), max_wz=0.600
+[INFO] [1791549124.955212590] [turn_controller]: Initialization complete: x=0.000000 y=0.000000 yaw=-0.001244 rad, odom_frame=odom
+[INFO] [1791549124.955269352] [turn_controller]: Waypoint 1: x=0.000000 y=0.000000 yaw=-0.786642 rad (unwrapped), delta=-0.785398 rad
+[INFO] [1791549124.955274509] [turn_controller]: Waypoint 2: x=0.000000 y=0.000000 yaw=-0.001244 rad (unwrapped), delta=0.785398 rad
+[INFO] [1791549124.955278406] [turn_controller]: Waypoint 3: x=0.000000 y=0.000000 yaw=0.784154 rad (unwrapped), delta=0.785398 rad
+[INFO] [1791549124.955281763] [turn_controller]: Waypoint 4: x=0.000000 y=0.000000 yaw=-0.001244 rad (unwrapped), delta=-0.785398 rad
+[INFO] [1791549124.955285165] [turn_controller]: Turn 1/4: start=-0.001244 delta=-0.785398 target=-0.786642 rad (unwrapped)
+[INFO] [1791549124.975216124] [turn_controller]: Turn progress 1/4: yaw=-0.0012 target=-0.7866 error=-0.7854 rad measured_wz=-0.0036 command_wz=-0.0120 rad/s dt=0.020 s
+[INFO] [1791549125.975230468] [turn_controller]: Turn progress 1/4: yaw=-0.1347 target=-0.7866 error=-0.6520 rad measured_wz=-0.5536 command_wz=-0.6000 rad/s dt=0.020 s
+[INFO] [1791549126.975242899] [turn_controller]: Turn progress 1/4: yaw=-0.6883 target=-0.7866 error=-0.0984 rad measured_wz=-0.2677 command_wz=-0.1560 rad/s dt=0.020 s
+[INFO] [1791549127.975275805] [turn_controller]: Turn progress 1/4: yaw=-0.7742 target=-0.7866 error=-0.0125 rad measured_wz=-0.0268 command_wz=-0.0195 rad/s dt=0.020 s
+[INFO] [1791549128.555276565] [turn_controller]: Turn 1 settled: error=-0.007605 wz=-0.001342; dwell=2.00 s
+[INFO] [1791549130.555315797] [turn_controller]: Reached turn 1: target=-0.786642 actual=-0.778716 error=-0.007927 rad
+[INFO] [1791549130.555373565] [turn_controller]: Turn 2/4: start=-0.778716 delta=0.785398 target=-0.001244 rad (unwrapped)
+[INFO] [1791549130.575330562] [turn_controller]: Turn progress 2/4: yaw=-0.7787 target=-0.0012 error=0.7775 rad measured_wz=-0.0007 command_wz=0.0120 rad/s dt=0.020 s
+[INFO] [1791549131.575357123] [turn_controller]: Turn progress 2/4: yaw=-0.5278 target=-0.0012 error=0.5266 rad measured_wz=0.5639 command_wz=0.6000 rad/s dt=0.020 s
+[INFO] [1791549132.575344687] [turn_controller]: Turn progress 2/4: yaw=-0.0457 target=-0.0012 error=0.0444 rad measured_wz=0.1666 command_wz=0.0559 rad/s dt=0.020 s
+[INFO] [1791549133.595348178] [turn_controller]: Turn 2 settled: error=0.007989 wz=-0.001015; dwell=2.00 s
+[INFO] [1791549135.595402490] [turn_controller]: Reached turn 2: target=-0.001244 actual=-0.009933 error=0.008689 rad
+[INFO] [1791549135.595451037] [turn_controller]: Turn 3/4: start=-0.009933 delta=0.785398 target=0.784154 rad (unwrapped)
+[INFO] [1791549135.615409331] [turn_controller]: Turn progress 3/4: yaw=-0.0099 target=0.7842 error=0.7941 rad measured_wz=-0.0005 command_wz=0.0120 rad/s dt=0.020 s
+[INFO] [1791549136.615431253] [turn_controller]: Turn progress 3/4: yaw=0.2666 target=0.7842 error=0.5176 rad measured_wz=0.5879 command_wz=0.6000 rad/s dt=0.020 s
+[INFO] [1791549137.615432777] [turn_controller]: Turn progress 3/4: yaw=0.7454 target=0.7842 error=0.0388 rad measured_wz=0.1457 command_wz=0.0720 rad/s dt=0.020 s
+[INFO] [1791549138.655553663] [turn_controller]: Turn 3 settled: error=0.008380 wz=-0.001844; dwell=2.00 s
+[INFO] [1791549140.655554759] [turn_controller]: Reached turn 3: target=0.784154 actual=0.774387 error=0.009767 rad
+[INFO] [1791549140.655637541] [turn_controller]: Turn 4/4: start=0.774387 delta=-0.785398 target=-0.001244 rad (unwrapped)
+[INFO] [1791549140.675514495] [turn_controller]: Turn progress 4/4: yaw=0.7744 target=-0.0012 error=-0.7756 rad measured_wz=-0.0013 command_wz=-0.0120 rad/s dt=0.020 s
+[INFO] [1791549141.675535773] [turn_controller]: Turn progress 4/4: yaw=0.5117 target=-0.0012 error=-0.5129 rad measured_wz=-0.5731 command_wz=-0.6000 rad/s dt=0.020 s
+[INFO] [1791549142.675552287] [turn_controller]: Turn progress 4/4: yaw=0.0352 target=-0.0012 error=-0.0365 rad measured_wz=-0.1614 command_wz=-0.0600 rad/s dt=0.020 s
+[INFO] [1791549143.595522424] [turn_controller]: Turn 4 settled: error=-0.007625 wz=-0.002236; dwell=2.00 s
+[INFO] [1791549145.675604995] [turn_controller]: Reached turn 4: target=-0.001244 actual=0.007966 error=-0.009210 rad
+[INFO] [1791549145.675684438] [turn_controller]: All turns completed; stopped.

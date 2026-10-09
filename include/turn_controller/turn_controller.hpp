@@ -104,6 +104,8 @@ private:
    * @param[in] wall Steady time from tick(), compared with the active segment deadline.
    * @param[in] time ROS time from tick(), used for PID, settling and dwell intervals.
    * @note Reads frozen target_ and accepted feedback; publishes only angular velocity or zero.
+   * Repeated ROS timestamps skip this update without resetting PID or issuing a new command.
+   * tick() still runs the steady-clock feedback guard first; paused feedback expires normally.
    */
   void execute_current_turn(
     const std::chrono::steady_clock::time_point & wall, const rclcpp::Time & time);

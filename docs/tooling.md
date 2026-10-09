@@ -35,3 +35,6 @@ The authoritative Checkpoint18 plan records deferred tools and acceptance gates.
 Do not copy local dynamics gains blindly into a generic package template. Reusable
 policy: use named units, freeze planned goals, qualify fresh stopped feedback, measure
 transient error as well as final error, and document each environment's evidence.
+
+Clock-rate regressions now explicitly decouple wall timers from ROS time. The current
+fixture has twelve cases; earlier ten-case results remain historical evidence.
