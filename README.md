@@ -1,3 +1,44 @@
+## Task4 real-robot entry
+
+```bash
+ros2 run turn_controller turn_controller 2
+```
+
+Scene 2 first reuses Task2 wall preparation (right-wall heading, centering and
+0.28 m rear distance from base_link), exits that process, then turns -30, -30,
++60 degrees using fixed targets relative to the prepared heading. These angles
+are initial estimates, not measured logo orientations. Scene 2 defaults to real
+time and /scan_filtered; the Task2 dependency must be built and sourced.
+The previous Task3 tag is unchanged. Without a scene argument, Task3 still runs
+its four simulation turns without wall preparation.
+
+At a later waypoint D, after the translation controller has stopped and exited:
+
+```bash
+ros2 run turn_controller turn_controller 2 --skip-preparation
+```
+
+This skips only wall placement. Fresh stopped odometry is still required; the
+current pose defines the new turn group's origin. For a single relative turn:
+
+```bash
+ros2 run turn_controller turn_controller 2 --skip-preparation --ros-args \
+  -p 'turn_angles:=[-0.5235987755982988]'
+```
+
+`turn_angles` contains signed relative radians. Each step is independently
+editable route data, executed by one shared angular controller; no duplicated
+1-to-2/2-to-3/3-to-1 PID functions are needed. A later route coordinator must stop
+and reap the translation controller before starting this process; an automatic
+AB-D-turn route dispatcher is not part of this change.
+
+Both prepared and direct entry accept ROS overrides. Prepared entry forwards
+them to both stages, so clock and topic overrides must suit both controllers.
+For isolated local simulation testing of scene 2, use `use_sim_time:=true` and
+`scan_topic:=/scan`. Do not use the simulation-only prepare_and_turn default for
+real hardware. Initial clearance must accommodate the complete body rotation;
+wall centering alone does not certify that clearance.
+
 # turn_controller
 
 Task3 in-place relative yaw PID for ROS2 Humble. Implemented with Coach support;

@@ -1,3 +1,13 @@
+## Task4 scene selection
+
+The default `prepare_and_turn` remains the simulation profile. The public
+`turn_controller 2` entry replaces itself with `prepare_and_turn --scene 2`
+before creating ROS interfaces. Scene 2 uses real time, /scan_filtered, and
+Task2's 30-degree wall half-window; scene 1 retains its local 20-degree profile.
+The coordinator invokes `turn_controller 2 --skip-preparation` after clean
+handoff, preventing recursion. At a later point, the same skip entry never
+moves the robot back to the task-start placement.
+
 # Optional wall-based start preparation
 
 `turn_controller` remains an angular-only Task3 executable. A separate simulation

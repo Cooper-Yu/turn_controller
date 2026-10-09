@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run optional wall preparation, stop its process, then run angular-only Task3.
+"""Run optional wall preparation, stop its process, then run angular-only scene control.
 
 Preparation delegates to distance_controller's existing start_paused interface.
 No route-resume command is issued. This coordinator owns only its child processes.
@@ -31,11 +31,16 @@ def executable(package):
 def options():
     """Read CLI settings; reject nonfinite distances and nonpositive time budgets."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scan-topic', default='/scan')
+    parser.add_argument('--scene', type=int, choices=(1, 2), default=1)
+    parser.add_argument('--scan-topic', default=None)
     parser.add_argument('--rear-distance', type=float, default=0.28)
     parser.add_argument('--timeout', type=float, default=75.0)
     parser.add_argument('--prepare-only', action='store_true')
-    args = parser.parse_args()
+    args, args.ros_args = parser.parse_known_args()
+    if args.ros_args and args.ros_args[0] != '--ros-args':
+        parser.error('Unknown coordinator arguments')
+    if args.scan_topic is None:
+        args.scan_topic = '/scan' if args.scene == 1 else '/scan_filtered'
     if not args.scan_topic or not math.isfinite(args.rear_distance) or args.rear_distance <= 0:
         parser.error('scan topic and positive finite rear distance required')
     if not math.isfinite(args.timeout) or args.timeout <= 0:
@@ -113,7 +118,7 @@ def terminate(process):
 
 
 def preparation_command(args):
-    """Compose the command for simulation-only wall preparation.
+    """Compose the command for scene-specific wall preparation.
 
     @param[in] args Parsed options from main(); reads scan_topic and rear_distance.
     @return Argument list passed to Popen() by main(); does not launch a process here.
@@ -126,7 +131,7 @@ def preparation_command(args):
         '-r',
         '__node:=task3_preparation',
         '-p',
-        'use_sim_time:=true',
+        'use_sim_time:=' + ('true' if args.scene == 1 else 'false'),
         '-p',
         'manual_mode:=true',
         '-p',
@@ -136,10 +141,18 @@ def preparation_command(args):
         '-p',
         'scan_topic:=' + args.scan_topic,
         '-p',
-        'wall_heading_half_angle:=' + str(math.radians(20.0)),
+        'wall_heading_half_angle:=' + str(math.radians(20.0 if args.scene == 1 else 30.0)),
         '-p',
         'rear_target_distance:=' + str(args.rear_distance),
-    ]
+    ] + args.ros_args
+
+
+def turn_command(args):
+    """Read options from main(); return angular-only child arguments with no placement recursion.
+
+    Scene and ROS overrides flow to TurnController; no task-start pose is reused at a later point.
+    """
+    return [executable('turn_controller'), str(args.scene), '--skip-preparation'] + args.ros_args
 
 
 def interrupt(_signal, _frame):
@@ -166,7 +179,7 @@ def main():
             node.get_logger().info('Preparation complete; no turn requested')
             return 0
         node.get_logger().info('Preparation process exited; starting angular-only turn controller')
-        child = subprocess.Popen([executable('turn_controller')])
+        child = subprocess.Popen(turn_command(args))
         return child.wait(timeout=145)
     except (RuntimeError, subprocess.TimeoutExpired) as error:
         node.get_logger().error(str(error))

@@ -4,10 +4,11 @@
 
 #include <stdexcept>
 
-TurnController::TurnController() : Node{"turn_controller"}
+TurnController::TurnController(int scene) : Node{"turn_controller"}, scene_{scene}
 {
   if (get_node_parameters_interface()->get_parameter_overrides().count("use_sim_time") == 0)
-    set_parameter(rclcpp::Parameter("use_sim_time", true));
+    set_parameter(rclcpp::Parameter("use_sim_time", scene_ == 1));
+  if (scene_ != 1 && scene_ != 2) throw std::invalid_argument("Scene must be 1 or 2");
   configure_turns();
   const double kp = positive("kp", 1.8);
   const double ki = nonnegative("ki", 0.03);
@@ -29,8 +30,8 @@ TurnController::TurnController() : Node{"turn_controller"}
     [this](nav_msgs::msg::Odometry::SharedPtr msg) { on_odom(*msg); });
   timer_ = create_wall_timer(std::chrono::milliseconds(20), [this]() { tick(); });
   RCLCPP_INFO(
-    get_logger(), "Task3: %zu relative turns; PID=(%.3f, %.3f, %.3f), max_wz=%.3f", steps_.size(),
-    kp, ki, kd, speed);
+    get_logger(), "Scene %d: %zu relative turns; PID=(%.3f, %.3f, %.3f), max_wz=%.3f", scene_,
+    steps_.size(), kp, ki, kd, speed);
 }
 
 int TurnController::exit_code() const
@@ -176,7 +177,8 @@ bool TurnController::handle_completion(const rclcpp::Time & time, double error)
 
 void TurnController::configure_turns()
 {
-  const auto defaults = turn_controller::default_turn_route();
+  const auto defaults =
+    scene_ == 1 ? turn_controller::default_turn_route() : turn_controller::real_turn_route();
   std::vector<double> angles;
   for (const auto & step : defaults) angles.push_back(step.angle_rad);
   angles = declare_parameter<std::vector<double>>("turn_angles", angles);

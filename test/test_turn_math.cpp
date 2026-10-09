@@ -95,3 +95,13 @@ TEST(Route, RejectInvalidDescriptionsAndOrigins)
       std::numeric_limits<double>::quiet_NaN(), 0, 0, turn_controller::default_turn_route()),
     std::invalid_argument);
 }
+
+TEST(Route, RealSceneReturnsToRecordedHeading)
+{
+  const auto points =
+    turn_controller::build_turn_waypoints(1.0, 2.0, 0.3, turn_controller::real_turn_route());
+  ASSERT_EQ(points.size(), 3u);
+  EXPECT_NEAR(points[0].yaw_rad, 0.3 - M_PI / 6.0, 1e-12);
+  EXPECT_NEAR(points[1].yaw_rad, 0.3 - M_PI / 3.0, 1e-12);
+  EXPECT_NEAR(points[2].yaw_rad, 0.3, 1e-12);
+}

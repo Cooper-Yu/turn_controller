@@ -62,6 +62,15 @@ inline std::vector<TurnStep> default_turn_route()
   };
 }
 
+/** @brief Compose Task4's independently adjustable relative steps.
+ * @return Three descriptions consumed by configure_turns(): right 30, right 30, left 60 degrees.
+ * @note Initial estimates require cloud hardware calibration. Each step shares the same executor.
+ */
+inline std::vector<TurnStep> real_turn_route()
+{
+  return {turn_by_degrees(-30.0), turn_by_degrees(-30.0), turn_by_degrees(60.0)};
+}
+
 /** @brief Generate every fixed heading from one initialized pose and a sequence of relative turns.
  * @param[in] x_m Initial odom x captured by handle_initialization(); copied to every waypoint.
  * @param[in] y_m Initial odom y captured by handle_initialization(); copied to every waypoint.

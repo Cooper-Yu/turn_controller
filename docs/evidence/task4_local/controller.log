@@ -1,0 +1,44 @@
+[INFO] [1791551877.184613972] [task3_preparation]: Scene 2: 1 segments, use_sim_time=true, max_speed=0.100
+[INFO] [1791551878.186781566] [task3_preparation]: Waiting for odom...
+[INFO] [1791551878.236799048] [task3_preparation]: Preparation stage=wall_measurement deadline=20.0 s (total limit=60.0 s)
+[INFO] [1791551878.236861689] [task3_preparation]: Right-wall alignment: valid=false stable=false angle=0.000 deg rms=0.0000 m span=0.000 m
+[INFO] [1791551878.886794131] [task3_preparation]: Preparation stage=heading_alignment deadline=30.0 s (total limit=60.0 s)
+[INFO] [1791551879.186797831] [task3_preparation]: Initialization progress: stage=heading_alignment | pose: x=0.000000 y=0.000000 yaw=-0.001372 rad | left=0.258 right=0.283 rear=0.221 rear_target=0.280 m | center_error=-0.0124 rear_error=0.0588 tolerance=0.0100 m | heading_error=0.0007 tolerance=0.0100 rad heading_basis=right_wall | position_ready=false heading_ready=true settling=true required_hold=0.50 s
+[INFO] [1791551879.286803169] [task3_preparation]: Right-wall alignment: valid=true stable=true angle=0.151 deg rms=0.0009 m span=0.324 m
+[INFO] [1791551879.386867693] [task3_preparation]: Initial alignment complete: yaw=-0.000823; right-wall reference captured; starting laser centering next tick
+[INFO] [1791551879.436836923] [task3_preparation]: Preparation stage=positioning deadline=30.0 s (total limit=60.0 s)
+[INFO] [1791551880.186815617] [task3_preparation]: Initialization progress: stage=positioning | pose: x=0.016932 y=-0.003186 yaw=-0.001521 rad | left=0.261 right=0.279 rear=0.240 rear_target=0.280 m | center_error=-0.0087 rear_error=0.0398 tolerance=0.0100 m | heading_error=-0.0007 tolerance=0.0100 rad heading_basis=held_odom_heading | position_ready=false heading_ready=true settling=false required_hold=0.50 s
+[INFO] [1791551881.186833142] [task3_preparation]: Initialization progress: stage=positioning | pose: x=0.033796 y=-0.003194 yaw=-0.002497 rad | left=0.261 right=0.279 rear=0.256 rear_target=0.280 m | center_error=-0.0088 rear_error=0.0236 tolerance=0.0100 m | heading_error=-0.0017 tolerance=0.0100 rad heading_basis=held_odom_heading | position_ready=false heading_ready=true settling=false required_hold=0.50 s
+[INFO] [1791551882.186865823] [task3_preparation]: Initialization progress: stage=positioning | pose: x=0.043681 y=-0.003189 yaw=-0.001549 rad | left=0.262 right=0.279 rear=0.266 rear_target=0.280 m | center_error=-0.0086 rear_error=0.0137 tolerance=0.0100 m | heading_error=-0.0007 tolerance=0.0100 rad heading_basis=held_odom_heading | position_ready=false heading_ready=true settling=false required_hold=0.50 s
+[INFO] [1791551883.186873514] [task3_preparation]: Initialization progress: stage=positioning | pose: x=0.048590 y=-0.003184 yaw=-0.001154 rad | left=0.262 right=0.279 rear=0.271 rear_target=0.280 m | center_error=-0.0087 rear_error=0.0094 tolerance=0.0100 m | heading_error=-0.0003 tolerance=0.0100 rad heading_basis=held_odom_heading | position_ready=true heading_ready=true settling=true required_hold=0.50 s
+[INFO] [1791551883.386944991] [task3_preparation]: Centered A recorded=(0.048589, -0.003183), yaw=-0.001323 rad (-0.076 deg), left=0.262 right=0.279 rear=0.270; starting route; heading_reference=-0.000823 rad
+[INFO] [1791551883.387005029] [task3_preparation]: Waypoints: frame=odom, position=m, yaw=rad; fixed position goals
+[INFO] [1791551883.387010025] [task3_preparation]: Waypoint 0 A: x=0.048589 y=-0.003183 yaw=-0.000823 (held heading)
+[INFO] [1791551883.387014424] [task3_preparation]: Waypoint 1 B: x=0.948589 y=-0.003924 yaw=-0.000823 (held heading)
+[INFO] [1791551883.452897377] [task3_sequence]: Preparation accepted finish: state=WAITING waypoint=A pending=1 return_remaining=0 pose=(0.0485892,-0.00318224,-0.0012423) heading_reference=-0.000823294
+[INFO] [1791551883.617321227] [task3_sequence]: Preparation process exited; starting angular-only turn controller
+[INFO] [1791551883.646790489] [turn_controller]: Scene 2: 3 relative turns; PID=(1.800, 0.030, 0.350), max_wz=0.600
+[INFO] [1791551884.046924227] [turn_controller]: Initialization complete: x=0.048589 y=-0.003178 yaw=-0.001386 rad, odom_frame=odom
+[INFO] [1791551884.046990345] [turn_controller]: Waypoint 1: x=0.048589 y=-0.003178 yaw=-0.524984 rad (unwrapped), delta=-0.523599 rad
+[INFO] [1791551884.046996342] [turn_controller]: Waypoint 2: x=0.048589 y=-0.003178 yaw=-1.048583 rad (unwrapped), delta=-0.523599 rad
+[INFO] [1791551884.047000047] [turn_controller]: Waypoint 3: x=0.048589 y=-0.003178 yaw=-0.001386 rad (unwrapped), delta=1.047198 rad
+[INFO] [1791551884.047003749] [turn_controller]: Turn 1/3: start=-0.001386 delta=-0.523599 target=-0.524984 rad (unwrapped)
+[INFO] [1791551884.066934593] [turn_controller]: Turn progress 1/3: yaw=-0.0014 target=-0.5250 error=-0.5235 rad measured_wz=-0.0019 command_wz=-0.0120 rad/s dt=0.020 s
+[INFO] [1791551885.066962490] [turn_controller]: Turn progress 1/3: yaw=-0.1479 target=-0.5250 error=-0.3771 rad measured_wz=-0.5375 command_wz=-0.5254 rad/s dt=0.020 s
+[INFO] [1791551886.066984983] [turn_controller]: Turn progress 1/3: yaw=-0.4692 target=-0.5250 error=-0.0558 rad measured_wz=-0.0980 command_wz=-0.0726 rad/s dt=0.020 s
+[INFO] [1791551887.506992997] [turn_controller]: Turn 1 settled: error=-0.008315 wz=-0.000656; dwell=0.50 s
+[INFO] [1791551888.007002843] [turn_controller]: Reached turn 1: target=-0.524984 actual=-0.516913 error=-0.008071 rad
+[INFO] [1791551888.007059256] [turn_controller]: Turn 2/3: start=-0.516913 delta=-0.523599 target=-1.048583 rad (unwrapped)
+[INFO] [1791551888.027001547] [turn_controller]: Turn progress 2/3: yaw=-0.5169 target=-1.0486 error=-0.5317 rad measured_wz=-0.0010 command_wz=-0.0120 rad/s dt=0.020 s
+[INFO] [1791551889.027070443] [turn_controller]: Turn progress 2/3: yaw=-0.7776 target=-1.0486 error=-0.2710 rad measured_wz=-0.4989 command_wz=-0.3960 rad/s dt=0.020 s
+[INFO] [1791551890.027051941] [turn_controller]: Turn progress 2/3: yaw=-1.0150 target=-1.0486 error=-0.0336 rad measured_wz=-0.0606 command_wz=-0.0452 rad/s dt=0.020 s
+[INFO] [1791551891.107066684] [turn_controller]: Turn 2 settled: error=-0.007081 wz=-0.001510; dwell=0.50 s
+[INFO] [1791551891.607078574] [turn_controller]: Reached turn 2: target=-1.048583 actual=-1.041275 error=-0.007308 rad
+[INFO] [1791551891.607133541] [turn_controller]: Turn 3/3: start=-1.041275 delta=1.047198 target=-0.001386 rad (unwrapped)
+[INFO] [1791551891.627070999] [turn_controller]: Turn progress 3/3: yaw=-1.0413 target=-0.0014 error=1.0399 rad measured_wz=0.0013 command_wz=0.0120 rad/s dt=0.020 s
+[INFO] [1791551892.627087682] [turn_controller]: Turn progress 3/3: yaw=-0.7766 target=-0.0014 error=0.7753 rad measured_wz=0.5746 command_wz=0.6000 rad/s dt=0.020 s
+[INFO] [1791551893.627111619] [turn_controller]: Turn progress 3/3: yaw=-0.1606 target=-0.0014 error=0.1592 rad measured_wz=0.3876 command_wz=0.2760 rad/s dt=0.020 s
+[INFO] [1791551894.627124073] [turn_controller]: Turn progress 3/3: yaw=-0.0218 target=-0.0014 error=0.0205 rad measured_wz=0.0380 command_wz=0.0300 rad/s dt=0.020 s
+[INFO] [1791551895.407163542] [turn_controller]: Turn 3 settled: error=0.008340 wz=-0.000172; dwell=0.50 s
+[INFO] [1791551895.907157709] [turn_controller]: Reached turn 3: target=-0.001386 actual=-0.010665 error=0.009279 rad
+[INFO] [1791551895.907219325] [turn_controller]: All turns completed; stopped.

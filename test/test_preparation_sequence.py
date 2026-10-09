@@ -13,6 +13,21 @@ spec.loader.exec_module(sequence)
 
 
 class PreparationGates(unittest.TestCase):
+    def test_real_scene_commands_and_override_flow(self):
+        with patch(
+            'sys.argv',
+            ['prepare_and_turn', '--scene', '2', '--ros-args', '-p', 'dwell_duration:=0.7'],
+        ):
+            args = sequence.options()
+        with patch.object(sequence, 'executable', side_effect=lambda name: '/installed/' + name):
+            prep = sequence.preparation_command(args)
+            turn = sequence.turn_command(args)
+        self.assertIn('scan_topic:=/scan_filtered', prep)
+        self.assertIn('use_sim_time:=false', prep)
+        self.assertIn('start_paused:=true', prep)
+        self.assertEqual(turn[1:3], ['2', '--skip-preparation'])
+        self.assertEqual(turn[-3:], ['--ros-args', '-p', 'dwell_duration:=0.7'])
+
     def test_ready_requires_finish_and_clean_exit(self):
         process = Mock()
         process.poll.return_value = None

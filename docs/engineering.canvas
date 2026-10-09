@@ -44,6 +44,15 @@
       "y": 0,
       "width": 440,
       "height": 420
+    },
+    {
+      "id": "task4-entry",
+      "type": "text",
+      "text": "Task4: turn_controller 2\nOptional one-time placement; --skip-preparation at later waypoints.\nSee README.md and docs/flow.md",
+      "x": 1120,
+      "y": 400,
+      "width": 420,
+      "height": 180
     }
   ],
   "edges": [

@@ -42,3 +42,17 @@ flowchart LR
 ```
 
 See start_preparation.md. The coordinator never resumes Task2's previewed AB route.
+
+## Task4 lifecycle
+
+```mermaid
+flowchart LR
+  E[Scene 2 entry] --> Q{Skip preparation?}
+  Q -- no --> P[Task2 wall preparation]
+  P --> F[Finish and reap preparation]
+  F --> O[Fresh stopped odom at current pose]
+  Q -- yes --> O
+  O --> W[Freeze three cumulative yaw targets]
+  W --> T[Shared angular executor]
+  T --> Z[Stop and exit]
+```

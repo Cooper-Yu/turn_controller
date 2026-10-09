@@ -20,10 +20,11 @@
 class TurnController : public rclcpp::Node
 {
 public:
-  /** @brief Declare simulation parameters and connect control/feedback interfaces.
+  /** @brief Declare scene parameters and connect control/feedback interfaces.
+   * @param[in] scene Scene selected by main(): 1 simulation, 2 real-robot route.
    * @note Initialization waits for fresh stopped feedback; no laser alignment or translation.
    */
-  TurnController();
+  explicit TurnController(int scene = 1);
 
   /** @brief Report the result of execution to main().
    * @return Zero on completion, two on runtime fault.
@@ -31,6 +32,7 @@ public:
   int exit_code() const;
 
 private:
+  int scene_{1};  ///< main() selects route and default clock; never triggers preparation here.
   /** @brief Read and validate a nonnegative numeric ROS parameter.
    * @param[in] name Parameter key chosen by the constructor.
    * @param[in] fallback Default value used when no override is supplied.
