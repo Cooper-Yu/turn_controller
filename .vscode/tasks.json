@@ -1,0 +1,136 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Engineering: check style",
+      "type": "process",
+      "command": "python3",
+      "args": [
+        "tools/check_style.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Engineering: generate Doxygen",
+      "type": "process",
+      "command": "doxygen",
+      "args": [
+        "docs/Doxyfile"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "turn_controller: clang-tidy (Problems)",
+      "type": "process",
+      "command": "clang-tidy",
+      "args": [
+        "${file}",
+        "-p",
+        "${input:workspaceRoot}/build/turn_controller",
+        "--use-color=false"
+      ],
+      "problemMatcher": {
+        "owner": "training-clang-tidy-turn_controller",
+        "source": "clang-tidy (task)",
+        "fileLocation": "absolute",
+        "pattern": {
+          "regexp": "^(.+):(\\d+):(\\d+): (warning|error): (.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "turn_controller: documentation (Problems)",
+      "type": "process",
+      "command": "doxygen",
+      "args": [
+        "docs/Doxyfile.check"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": {
+        "owner": "training-doxygen-turn_controller",
+        "source": "Doxygen (task)",
+        "fileLocation": "absolute",
+        "pattern": {
+          "regexp": "^(.+):(\\d+): (warning|error): (.*)$",
+          "file": 1,
+          "line": 2,
+          "severity": 3,
+          "message": 4
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Engineering: build package",
+      "type": "process",
+      "command": "colcon",
+      "args": [
+        "build",
+        "--packages-select",
+        "turn_controller",
+        "--cmake-args",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+      ],
+      "options": {
+        "cwd": "${input:workspaceRoot}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Engineering: test package",
+      "type": "process",
+      "command": "colcon",
+      "args": [
+        "test",
+        "--packages-select",
+        "turn_controller"
+      ],
+      "options": {
+        "cwd": "${input:workspaceRoot}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Engineering: show test results",
+      "type": "process",
+      "command": "colcon",
+      "args": [
+        "test-result",
+        "--verbose"
+      ],
+      "options": {
+        "cwd": "${input:workspaceRoot}"
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "workspaceRoot",
+      "type": "promptString",
+      "description": "Absolute colcon workspace path with ROS environment sourced"
+    }
+  ]
+}

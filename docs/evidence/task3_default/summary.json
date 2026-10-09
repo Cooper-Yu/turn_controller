@@ -1,0 +1,47 @@
+{
+  "turns": [
+    {
+      "turn": 1,
+      "target_rad": -0.786455,
+      "final_error_rad": -0.008193,
+      "peak_overshoot_rad": 0.0,
+      "dwell_wall_seconds": 2.000032663345337,
+      "dwell_sampled_ros_seconds": 1.9600000000000009,
+      "dwell_max_measured_wz": 0.009796475407290698
+    },
+    {
+      "turn": 2,
+      "target_rad": -0.001057,
+      "final_error_rad": 0.00882,
+      "peak_overshoot_rad": 0.0,
+      "dwell_wall_seconds": 2.000027656555176,
+      "dwell_sampled_ros_seconds": 1.9599999999999973,
+      "dwell_max_measured_wz": 0.008070274227660112
+    },
+    {
+      "turn": 3,
+      "target_rad": 0.784341,
+      "final_error_rad": 0.009021,
+      "peak_overshoot_rad": 0.0,
+      "dwell_wall_seconds": 2.0000457763671875,
+      "dwell_sampled_ros_seconds": 1.9600000000000009,
+      "dwell_max_measured_wz": 0.008737966091233252
+    },
+    {
+      "turn": 4,
+      "target_rad": -0.001057,
+      "final_error_rad": -0.007597,
+      "peak_overshoot_rad": 0.0,
+      "dwell_wall_seconds": 2.0000288486480713,
+      "dwell_sampled_ros_seconds": 1.9600000000000009,
+      "dwell_max_measured_wz": 0.00673899555281725
+    }
+  ],
+  "max_command_rad_s": 0.6,
+  "final_measured_rad_s": 0.0009097349849785761,
+  "max_xy_displacement_m": 1.0159644495551184e-12,
+  "linear_commands_zero": true,
+  "final_command_zero": true,
+  "exit_code": 0,
+  "limits": "Odometry and command evidence only; no independent collision or absolute heading ground truth."
+}

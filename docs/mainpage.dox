@@ -1,0 +1,6 @@
+/** @mainpage turn_controller Project Guide
+ * @brief Task3 relative in-place turning in the maze simulation.
+ * See TurnController for the node lifecycle and turn_controller::AngularPid for control math.
+ * The README describes commands and assumptions.
+ * See docs/task3_acceptance.md for the local rubric assessment and cloud acceptance gate.
+ */

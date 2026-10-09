@@ -1,0 +1,51 @@
+[
+  {
+    "case": "wrap",
+    "passed": true,
+    "exit": 0
+  },
+  {
+    "case": "loss",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "jump",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "no_odom",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "stale",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "frame",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "moving",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "single",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "stalled",
+    "passed": true,
+    "exit": 2
+  },
+  {
+    "case": "invalid_gain",
+    "passed": true
+  }
+]
