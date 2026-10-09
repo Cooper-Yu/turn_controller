@@ -35,6 +35,15 @@
       "y": 560,
       "width": 440,
       "height": 420
+    },
+    {
+      "id": "start-preparation",
+      "type": "file",
+      "file": "docs/start_preparation.md",
+      "x": 1120,
+      "y": 0,
+      "width": 440,
+      "height": 420
     }
   ],
   "edges": [
@@ -44,7 +53,7 @@
       "fromSide": "right",
       "toNode": "package-flow",
       "toSide": "left",
-      "label": "职责到流程"
+      "label": "Responsibilities to flow"
     },
     {
       "id": "flow-test",
@@ -52,7 +61,7 @@
       "fromSide": "bottom",
       "toNode": "package-test",
       "toSide": "top",
-      "label": "预期到验证"
+      "label": "Expectations to verification"
     },
     {
       "id": "readme-api",
@@ -60,7 +69,15 @@
       "fromSide": "bottom",
       "toNode": "package-api",
       "toSide": "top",
-      "label": "包到接口"
+      "label": "Package to interfaces"
+    },
+    {
+      "id": "flow-preparation",
+      "fromNode": "package-flow",
+      "fromSide": "right",
+      "toNode": "start-preparation",
+      "toSide": "left",
+      "label": "Optional preceding stage"
     }
   ]
 }

@@ -1,0 +1,12 @@
+[INFO] [1791549864.283752051] [task3_preparation]: Scene 2: 1 segments, use_sim_time=true, max_speed=0.100
+[INFO] [1791549864.335251598] [task3_preparation]: Preparation stage=wall_measurement deadline=20.0 s (total limit=60.0 s)
+[INFO] [1791549864.385254761] [task3_preparation]: Right-wall alignment: valid=true stable=false angle=-9.775 deg rms=0.0010 m span=0.358 m
+[INFO] [1791549864.935274734] [task3_preparation]: Preparation stage=heading_alignment deadline=30.0 s (total limit=60.0 s)
+[INFO] [1791549865.285269664] [task3_preparation]: Initialization progress: stage=heading_alignment | pose: x=-0.001267 y=0.015127 yaw=0.169306 rad | left=0.243 right=0.305 rear=0.224 rear_target=0.280 m | center_error=-0.0313 rear_error=0.0565 tolerance=0.0100 m | heading_error=0.1718 tolerance=0.0100 rad heading_basis=right_wall | position_ready=false heading_ready=false settling=false required_hold=0.50 s
+[INFO] [1791549865.385267560] [task3_preparation]: Right-wall alignment: valid=true stable=true angle=-9.071 deg rms=0.0009 m span=0.355 m
+[INFO] [1791549866.285285095] [task3_preparation]: Initialization progress: stage=heading_alignment | pose: x=-0.001266 y=0.015126 yaw=0.057995 rad | left=0.242 right=0.299 rear=0.221 rear_target=0.280 m | center_error=-0.0287 rear_error=0.0595 tolerance=0.0100 m | heading_error=0.0492 tolerance=0.0100 rad heading_basis=right_wall | position_ready=false heading_ready=false settling=false required_hold=0.50 s
+[INFO] [1791549866.385283466] [task3_preparation]: Right-wall alignment: valid=true stable=true angle=-2.438 deg rms=0.0009 m span=0.342 m
+[ERROR] [1791549866.785340542] [task3_preparation]: Initial preparation fault: reason=SCAN_INVALID stage=heading_alignment stage_elapsed=1.850 s total_elapsed=2.450 s scan_reason=wall window invalid: rear wall_valid=true wall_stable=true angle=-1.478 deg rms=0.0009 m span=0.341 m
+[ERROR] [1791549866.832637305] [task3_sequence]: state=FAULT waypoint=A pending=1 return_remaining=0 pose=(-0.00126606,0.0151263,0.0300983) heading_reference=0
+[INFO] [1791549866.832810601] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ros2run]: Process exited with failure 2

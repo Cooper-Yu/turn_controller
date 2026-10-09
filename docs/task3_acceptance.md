@@ -119,3 +119,9 @@ pause timeout). The full maze regression completes four turns, max endpoint erro
 evidence/clock_repair; the full CSV remains in the local engineering record.
 Turn-progress logs now show yaw, target, error, measured/commanded angular velocity
 and dt once per advancing ROS second. Confirm the repair in the cloud before tagging.
+
+## Optional prepared start
+
+[Wall-based start preparation](start_preparation.md) is a separately verified
+local convenience entry. It does not change the official angular-only command,
+Task2 tag, cloud acceptance status, or the conservative score above.

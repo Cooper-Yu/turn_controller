@@ -38,3 +38,9 @@ transient error as well as final error, and document each environment's evidence
 
 Clock-rate regressions now explicitly decouple wall timers from ROS time. The current
 fixture has twelve cases; earlier ten-case results remain historical evidence.
+
+The optional preparation coordinator adds five unittest lifecycle gates under CTest,
+plus actual maze handoff and missing-scan failure checks. Canvas/Mermaid/README now
+show its separate preparation stage. GDB/rqt_graph/rosbag2/PlotJuggler remain deferred
+until a timing, graph or geometry ambiguity requires them; existing logs and CSV
+cover this local change. No Task2 source or tag was modified.

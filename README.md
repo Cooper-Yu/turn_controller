@@ -147,3 +147,11 @@ pause timeout). The full maze regression completes four turns, max endpoint erro
 evidence/clock_repair; the full CSV remains in the local engineering record.
 Turn-progress logs now show yaw, target, error, measured/commanded angular velocity
 and dt once per advancing ROS second. Confirm the repair in the cloud before tagging.
+
+## Optional start-position preparation
+
+Use [wall-based start preparation](docs/start_preparation.md) to align with the right wall,
+center between side walls and adjust rear distance before the angular-only program.
+The separate prepare_and_turn executable delegates to the installed Task2 controller,
+waits for stopped readiness and a successful process exit, then starts turns.
+The ordinary Task3 command and Task2 source/tag are unchanged.

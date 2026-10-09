@@ -1,0 +1,18 @@
+{
+  "sequential_handoff": true,
+  "turn_origin_xy": [
+    0.049396,
+    -0.003539
+  ],
+  "turn_errors_rad": [
+    -0.006971,
+    0.008598,
+    0.008498,
+    -0.007727
+  ],
+  "turn_linear_commands_zero": true,
+  "turn_max_xy_drift_m": 1.7488299707407183e-05,
+  "final_zero_command": true,
+  "exit_code": 0,
+  "limits": "Odom/cmd evidence only; no independent collision measurement."
+}

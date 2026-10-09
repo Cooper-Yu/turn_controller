@@ -48,3 +48,10 @@ long-arc correctness is covered separately by pure/isolated tests. Sampled dwell
 coverage can be slightly shorter than the full two-second log interval. These tools
 observe odometry and commands, not independent collision or true-heading ground truth.
 They do not start a simulator or certify hardware/official grading.
+
+Preparation lifecycle gates run through colcon/CTest as preparation_sequence (five
+Python unittest cases). Run them directly with python3 test/test_preparation_sequence.py.
+The wall-preparation integration is tested separately in the maze: valid preparation
+then turns, perturbed start, and missing-scan refusal. Use tools/summarize_prepared.py
+with the captured run directory; unlike summarize_maze.py it allows translation only
+before the handoff to the angular controller.

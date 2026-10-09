@@ -26,3 +26,19 @@ flowchart TD
 The waypoint list is written only during initialization. begin_turn() selects a stored
 target. on_odom() updates feedback; tick()
 selects tracking or completion. No distance controller runs concurrently.
+
+## Optional preparation sequence
+
+```mermaid
+flowchart LR
+  A[Wall measurement] --> B[Right-wall heading alignment]
+  B --> C[Heading hold plus side and rear positioning]
+  C --> D[Stopped WAITING]
+  D --> E[Finish accepted and preparation process exited]
+  E --> F[Record adjusted origin and run angular waypoints]
+  A --> G[Fault: stop, no turn launch]
+  B --> G
+  C --> G
+```
+
+See start_preparation.md. The coordinator never resumes Task2's previewed AB route.

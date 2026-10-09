@@ -1,0 +1,7 @@
+[INFO] [1791550179.429958014] [task3_preparation]: Scene 2: 1 segments, use_sim_time=true, max_speed=0.100
+[INFO] [1791550179.581172453] [task3_preparation]: Preparation stage=wall_measurement deadline=20.0 s (total limit=60.0 s)
+[INFO] [1791550180.431212548] [task3_preparation]: Waiting for initial scan: stage=wall_measurement reason=no scan received
+[INFO] [1791550181.431246893] [task3_preparation]: Waiting for initial scan: stage=wall_measurement reason=no scan received
+[ERROR] [1791550182.429997492] [task3_sequence]: Preparation deadline expired; turn controller will not start
+[INFO] [1791550182.430153949] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ros2run]: Process exited with failure 2
