@@ -125,3 +125,12 @@ and dt once per advancing ROS second. Confirm the repair in the cloud before tag
 [Wall-based start preparation](start_preparation.md) is a separately verified
 local convenience entry. It does not change the official angular-only command,
 Task2 tag, cloud acceptance status, or the conservative score above.
+
+## Dwell default update (2026-10-09)
+
+The learner supplied a successful cloud angular-only four-turn log with the old
+2 s dwell. At their request, the new default is 0.5 s of ROS time; the 0.4 s
+settling check remains unchanged. Build, 5 coordinator tests, 10 C++ tests and
+documentation checks passed. New-duration runtime verification remains pending.
+The earlier preparation-to-turn startup timeout is not established as resolved.
+Historical evidence retains its original 2 s setting. No task3 tag is created.

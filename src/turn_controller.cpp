@@ -18,7 +18,7 @@ TurnController::TurnController() : Node{"turn_controller"}
   tolerance_ = positive("heading_tolerance", 0.01);
   stopped_rate_ = positive("stopped_yaw_rate", 0.02);
   settle_time_ = positive("settle_duration", 0.4);
-  dwell_time_ = nonnegative("dwell_duration", 2.0);
+  dwell_time_ = nonnegative("dwell_duration", 0.5);
   segment_timeout_ = positive("segment_timeout", 30.0);
   startup_timeout_ = positive("startup_timeout", 15.0);
   odom_timeout_ = positive("odom_timeout", 0.5);

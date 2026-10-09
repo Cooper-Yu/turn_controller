@@ -18,7 +18,7 @@ Speed is limited to 0.6 rad/s and output slew to 0.6 rad/s squared. Conditional
 integration prevents error accumulation into speed saturation.
 
 Within 0.01 rad of the target, command zero; require angular speed below 0.02 rad/s
-and planar speed below 0.01 m/s continuously for 0.4 s, then dwell for 2 s.
+and planar speed below 0.01 m/s continuously for 0.4 s, then dwell for 0.5 s of ROS time.
 Drift out of tolerance restarts qualification. Complete all turns, stop, exit zero.
 Every segment has a 30 s steady-clock deadline. Startup has a 15 s deadline.
 Invalid/stale odom does not refresh feedback age. A 0.5 s odom gap, frame change,
